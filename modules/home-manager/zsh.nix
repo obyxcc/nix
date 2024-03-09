@@ -1,7 +1,7 @@
 { pkgs, config, ... }: 
 let
   shellAliases = {
-    "rebuild" = "sudo nixos-rebuild switch --flake ~/.config/nixos/hosts/$1";
+    "rebuild" = "sudo nixos-rebuild switch --flake ~/.config/nixos/hosts/#default";
     "ls" = "eza -Al --color";
     "grep" = "grep --color=auto";
     "df" = "df -h";

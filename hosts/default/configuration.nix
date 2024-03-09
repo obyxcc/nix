@@ -77,14 +77,14 @@ nix.settings = {
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cole = {
-     isNormalUser = true;
-     extraGroups = [ 
-     	"wheel" # Enable ‘sudo’ for the user.
-	"networkmanager" 
-	"libvirtd" 
-     ]; 
-     shell = pkgs.zsh;
-     packages = with pkgs; [
+    isNormalUser = true;
+    extraGroups = [ 
+      "wheel" # Enable ‘sudo’ for the user.
+      "networkmanager" 
+      "libvirtd" 
+    ]; 
+    shell = pkgs.zsh;
+    packages = with pkgs; [
       bat
       thunderbird
       fastfetch
@@ -108,7 +108,6 @@ nix.settings = {
       cmus
       htop
       obsidian
-      pass-nodmenu
       pulsemixer
       eza
       catppuccin-gtk
@@ -119,8 +118,9 @@ nix.settings = {
       zip
       unzip
       ripgrep #nvim *FIXME
-     ];
-   };
+      wl-clipboard
+    ];
+  };
 
   home-manager = {
   # also pass inputs to home-manager modules
@@ -131,9 +131,9 @@ nix.settings = {
 };
 
   security.polkit.enable = true;
-	virtualisation.libvirtd.enable = true;
-	programs.virt-manager.enable = true;
-   nixpkgs.config.allowUnfree = true;
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  nixpkgs.config.allowUnfree = true;
 
    # Hint Electron apps to use wayland
 	environment.sessionVariables = {
@@ -161,8 +161,12 @@ nix.settings = {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
    environment.systemPackages = with pkgs; [
-     #vim  # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     #wget
+     (pass.withExtensions (ext: [  # Base pass secret mgr + extensions
+        ext.pass-otp # one time passwords
+        ext.pass-genphrase # generate memorable passphrases
+        ext.pass-import    # import from other password managers
+        ext.pass-update    # helpful password change workflow
+      ]))
    ];
 
    fonts.packages = with pkgs; [
@@ -173,10 +177,10 @@ nix.settings = {
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
 
