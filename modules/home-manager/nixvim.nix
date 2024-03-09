@@ -18,11 +18,11 @@
       undofile = true;
 
       smartindent = true;
-      # signcolumn = "yes";
+      showmode = false;
     };
 
     plugins = {
-      lightline.enable = true;
+      lualine.enable = true;
       barbar = {
 	enable = true;
 	animation = false;
