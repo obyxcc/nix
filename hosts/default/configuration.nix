@@ -5,23 +5,22 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "xps"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
-nix.settings = {
-	experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
     substituters = ["https://hyprland.cachix.org"]; # cache for hyprland build
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="]; # cache for hyprland build
   };
@@ -29,9 +28,6 @@ nix.settings = {
   # Set your time zone.
   time.timeZone = "America/New_York";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
@@ -41,40 +37,11 @@ nix.settings = {
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  services.upower.enable = true;
 
   security.sudo.wheelNeedsPassword = false;
+  security.rtkit.enable = true;
+  security.polkit.enable = true;
   
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-  # Remove sound.enable or set it to false if you had it set previously, as sound.enable is only meant for ALSA-based configurations
-
-	# rtkit is optional but recommended
-	security.rtkit.enable = true;
-	services.pipewire = {
-	  enable = true;
-	  alsa.enable = true;
-	  alsa.support32Bit = true;
-	  pulse.enable = true;
-	  # If you want to use JACK applications, uncomment this
-	  #jack.enable = true;
-	};
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cole = {
     isNormalUser = true;
@@ -84,89 +51,33 @@ nix.settings = {
       "libvirtd" 
     ]; 
     shell = pkgs.zsh;
-    packages = with pkgs; [
-      bat
-      thunderbird
-      fastfetch
-      neovim
-      git
-      foot
-      hyprpaper
-      hyprshot
-      hypridle
-      hyprlock
-      kanshi
-      tofi
-      steam
-      prismlauncher
-      heroic
-      spotify
-      webcord
-      gimp
-      yazi
-      irssi
-      cmus
-      htop
-      obsidian
-      pulsemixer
-      eza
-      catppuccin-gtk
-      inkscape
-      blender
-      mpv
-      zathura
-      zip
-      unzip
-      ripgrep #nvim *FIXME
-      wl-clipboard
-    ];
   };
 
   home-manager = {
   # also pass inputs to home-manager modules
   extraSpecialArgs = {inherit inputs;};
+  useGlobalPkgs = true;
   users = {
     "cole" = import ./home.nix;
   };
 };
 
-  security.polkit.enable = true;
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
   nixpkgs.config.allowUnfree = true;
 
-   # Hint Electron apps to use wayland
-	environment.sessionVariables = {
-	  NIXOS_OZONE_WL = "1";
-	  SDL_VIDEODRIVER = "wayland";
-	};
-
-
-
-   #programs.hyprland = {
-   	#enable = true;
-	#package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-	#xwayland.enable = true;
-   #};
-
-   programs.zsh.enable = true;
-   environment.pathsToLink = [ "/share/zsh" ];
+  programs.zsh.enable = true;
+  environment.pathsToLink = [ "/share/zsh" ];
 
    programs.steam = {
-  	enable = true;
-  	remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  	dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+     enable = true;
+     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
    };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
    environment.systemPackages = with pkgs; [
-     (pass.withExtensions (ext: [  # Base pass secret mgr + extensions
-        ext.pass-otp # one time passwords
-        ext.pass-genphrase # generate memorable passphrases
-        ext.pass-import    # import from other password managers
-        ext.pass-update    # helpful password change workflow
-      ]))
    ];
 
    fonts.packages = with pkgs; [
@@ -186,6 +97,7 @@ nix.settings = {
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+  services.upower.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

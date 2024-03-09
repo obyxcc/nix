@@ -68,6 +68,7 @@
       nvim-colorizer.enable = true;
       indent-blankline.enable = true;
       gitsigns.enable = true;
+      neogit.enable = true;
       telescope = {
 	enable = true;
 	keymaps = {
@@ -119,6 +120,13 @@
       { # focus nvim-tree
 	action = "<cmd>NvimTreeFocus<CR>";
 	key = "<leader>e";
+	mode = "n";
+      }
+
+      # NeoGit
+      { # open neogit
+	action = "<cmd>Neogit<CR>";
+	key = "<leader>gi";
 	mode = "n";
       }
 

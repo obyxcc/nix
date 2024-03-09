@@ -29,7 +29,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -46,6 +46,45 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+      bat
+      thunderbird
+      fastfetch
+      git
+      foot
+      hyprpaper
+      hyprshot
+      hypridle
+      hyprlock
+      kanshi
+      tofi
+      steam
+      prismlauncher
+      heroic
+      spotify
+      webcord
+      gimp
+      yazi
+      irssi
+      cmus
+      htop
+      obsidian
+      pulsemixer
+      eza
+      catppuccin-gtk
+      inkscape
+      blender
+      mpv
+      zathura
+      zip
+      unzip
+      ripgrep #nvim *FIXME
+      wl-clipboard
+     (pass.withExtensions (ext: [  # Base pass secret mgr + extensions
+        ext.pass-otp # one time passwords
+        ext.pass-genphrase # generate memorable passphrases
+        ext.pass-import    # import from other password managers
+        ext.pass-update    # helpful password change workflow
+      ]))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -82,6 +121,7 @@
     EDITOR = "nvim";
     XCURSOR_SIZE = "24";
     QT_QPA_PLATFORMTHEME = "qt5ct";
+    NIXOS_OZONE_WL = "1";
     SDL_VIDEODRIVER = "wayland";
   };
 
@@ -108,16 +148,16 @@ xdg.userDirs = {
 };
 
 gtk = {
-    enable = true;
-    theme = {
-      name = "Catppuccin-Mocha-Compact-Lavender-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "lavender" ];
-        size = "compact";
-        tweaks = [ "rimless" ];
-        variant = "mocha";
-      };
+  enable = true;
+  theme = {
+    name = "Catppuccin-Mocha-Compact-Lavender-Dark";
+    package = pkgs.catppuccin-gtk.override {
+      accents = [ "lavender" ];
+      size = "compact";
+      tweaks = [ "rimless" ];
+      variant = "mocha";
     };
+  };
   iconTheme = {
     package = pkgs.gnome.adwaita-icon-theme;
     name = "Adwaita";
