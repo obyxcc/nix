@@ -66,6 +66,7 @@
 	};
       };
       nvim-colorizer.enable = true;
+      tmux-navigator.enable = true;
       indent-blankline.enable = true;
       gitsigns.enable = true;
       neogit.enable = true;
