@@ -1,12 +1,12 @@
 { pkgs, inputs, ... }:
 {
   wayland.windowManager.hyprland = {
-	  enable = true;
+    enable = true;
 
     settings = {
       monitor = [
-	",preferred,auto,auto"
-	"eDP-1,preferred,auto,1.25"
+       ",preferred,auto,auto"
+       "eDP-1,preferred,auto,1.25"
       ];
 
       exec-once = [
