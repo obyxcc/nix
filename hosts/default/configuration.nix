@@ -1,9 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { config, lib, pkgs, inputs, ... }:
-
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -15,14 +10,20 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "xps"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true;
+
     substituters = ["https://hyprland.cachix.org"]; # cache for hyprland build
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="]; # cache for hyprland build
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
   };
 
   # Set your time zone.
@@ -30,7 +31,7 @@
 
 
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
@@ -57,10 +58,16 @@
   # also pass inputs to home-manager modules
   extraSpecialArgs = {inherit inputs;};
   useGlobalPkgs = true;
-  users = {
-    "cole" = import ./home.nix;
+    users = {
+      "cole" = import ./home.nix;
+    };
   };
-};
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
 
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
@@ -78,11 +85,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
    environment.systemPackages = with pkgs; [
-   ];
-
-   fonts.packages = with pkgs; [
-	#(nerdfonts.override { fonts = [ "Jetbrains Mono" ]; })
-	nerdfonts
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
