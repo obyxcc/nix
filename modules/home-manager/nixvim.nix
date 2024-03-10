@@ -22,7 +22,17 @@
     };
 
     plugins = {
-      lualine.enable = true;
+      lualine = {
+	enable = true;
+	componentSeparators.left = "|";
+	componentSeparators.right = "|";
+	sectionSeparators.left = "";
+	sectionSeparators.right = "";
+	disabledFiletypes.statusline = [
+	  "NvimTree"
+	];
+      };
+      barbecue.enable = true;
       barbar = {
 	enable = true;
 	animation = false;
@@ -30,6 +40,9 @@
 	  close = "<leader>x";
 	  next = "<tab>";
 	  previous = "<S-tab>";
+	};
+	sidebarFiletypes = {
+	  "NvimTree" = true;
 	};
       };
       comment-nvim.enable = true;
