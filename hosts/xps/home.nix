@@ -4,6 +4,7 @@
     inputs.ags.homeManagerModules.default 
     ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/hyprpaper.nix
+    ../../modules/home-manager/hypridle.nix
     ../../modules/home-manager/foot.nix
     ../../modules/home-manager/tofi.nix
     ../../modules/home-manager/ags.nix
@@ -50,6 +51,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
       bat
+      brightnessctl
       thunderbird
       fastfetch
       git

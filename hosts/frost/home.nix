@@ -4,6 +4,7 @@
     inputs.ags.homeManagerModules.default 
     ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/hyprpaper.nix
+    ../../modules/home-manager/hypridle.nix
     ../../modules/home-manager/foot.nix
     ../../modules/home-manager/tofi.nix
     ../../modules/home-manager/ags.nix
@@ -50,6 +51,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
       bat
+      brightnessctl
       thunderbird
       fastfetch
       git
@@ -143,14 +145,14 @@ xdg.userDirs = {
   enable = true;
   createDirectories = true;
 
-  music = "~/mus";
-  videos = "~/vid";
-  desktop = "~/.local/share/desktop";
-  pictures = "~/pic";
-  download = "~/dls";
-  documents = "~/doc";
-  templates = "~/.local/share/templates";
-  publicShare = "~/.local/share/public";
+  music = "mus";
+  videos = "vid";
+  desktop = ".local/share/desktop";
+  pictures = "pic";
+  download = "dls";
+  documents = "doc";
+  templates = ".local/share/templates";
+  publicShare = ".local/share/public";
 };
 
 gtk = {

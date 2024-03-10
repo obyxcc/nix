@@ -5,13 +5,15 @@
 
     settings = {
       monitor = [
-       ",preferred,auto,auto"
        "eDP-1,preferred,auto,1.25"
+       "desc:Samsung Electric Company Odyssey G40B HCJW503045,preferred,auto,auto"
+       ",preferred,auto,auto"
       ];
 
       exec-once = [
         "ags"
         "hyprpaper"
+        "hypridle"
       ];
 
       input = {
@@ -81,6 +83,7 @@
 
       misc = {
         force_default_wallpaper = 0; # Set to 0 or 1 to disable the anime mascot wallpapers
+	vrr = 1;
       };
 
       device = {
