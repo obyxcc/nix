@@ -74,12 +74,16 @@
       catppuccin-gtk
       inkscape
       blender
+      lshw
       mpv
       zathura
       zip
       unzip
       ripgrep #nvim *FIXME
       wl-clipboard
+      gamemode
+      gamescope
+      mangohud
      (pass.withExtensions (ext: [  # Base pass secret mgr + extensions
         ext.pass-otp # one time passwords
         ext.pass-genphrase # generate memorable passphrases
@@ -124,6 +128,7 @@
     QT_QPA_PLATFORMTHEME = "qt5ct";
     NIXOS_OZONE_WL = "1";
     SDL_VIDEODRIVER = "wayland";
+    XDG_DATA_HOME = "$HOME/.local/share";
   };
 
   home.pointerCursor = {

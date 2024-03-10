@@ -3,6 +3,8 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
+    ../../modules/nixos/audio.nix
+    ../../modules/nixos/nvidia-prime.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -80,6 +82,14 @@
      enable = true;
      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+     gamescopeSession = {
+      enable = true;
+      args = [ 
+	"-W 1920"
+	"-H 1200"
+	# "--hdr-enabled"
+      ];
+     };
    };
 
   # List packages installed in system profile. To search, run:
@@ -100,6 +110,7 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
   services.upower.enable = true;
+  services.fstrim.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
