@@ -195,6 +195,26 @@
 	key = "<C-l>";
 	mode = "n";
       }
+      { # move highlighted lines (up)
+	action = ":m '<-2<CR>gv=gv";
+	key = "K";
+	mode = "v";
+      }
+      { # move highlighted lines (down)
+	action = ":m '>+1<CR>gv=gv";
+	key = "J";
+	mode = "v";
+      }
+      { # outdent highlighted lines
+	action = "<gv";
+	key = "<";
+	mode = "v";
+      }
+      { # indent highlighted lines
+	action = ">gv";
+	key = ">";
+	mode = "v";
+      }
     ];
   };
 }
