@@ -13,6 +13,8 @@
     ../../modules/home-manager/starship.nix
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/tmux.nix
+    ../../modules/home-manager/irssi.nix
+    ../../modules/home-manager/yazi.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -30,7 +32,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -39,7 +41,7 @@
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -47,6 +49,47 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+      bat
+      thunderbird
+      fastfetch
+      git
+      foot
+      hyprpaper
+      hyprshot
+      hypridle
+      hyprlock
+      kanshi
+      tofi
+      steam
+      prismlauncher
+      heroic
+      spotify
+      webcord
+      gimp
+      cmus
+      htop
+      obsidian
+      pulsemixer
+      eza
+      catppuccin-gtk
+      inkscape
+      blender
+      lshw
+      mpv
+      zathura
+      zip
+      unzip
+      ripgrep #nvim *FIXME
+      wl-clipboard
+      gamemode
+      gamescope
+      mangohud
+     (pass.withExtensions (ext: [  # Base pass secret mgr + extensions
+        ext.pass-otp # one time passwords
+        ext.pass-genphrase # generate memorable passphrases
+        ext.pass-import    # import from other password managers
+        ext.pass-update    # helpful password change workflow
+      ]))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -83,7 +126,9 @@
     EDITOR = "nvim";
     XCURSOR_SIZE = "24";
     QT_QPA_PLATFORMTHEME = "qt5ct";
+    NIXOS_OZONE_WL = "1";
     SDL_VIDEODRIVER = "wayland";
+    XDG_DATA_HOME = "$HOME/.local/share";
   };
 
   home.pointerCursor = {
