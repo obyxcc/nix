@@ -64,7 +64,7 @@
       tofi
       steam
       prismlauncher
-      heroic
+      minigalaxy
       spotify
       webcord
       gimp
