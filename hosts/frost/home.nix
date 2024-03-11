@@ -5,6 +5,7 @@
     ../../modules/home-manager/hyprland.nix
     ../../modules/home-manager/hyprpaper.nix
     ../../modules/home-manager/hypridle.nix
+    ../../modules/home-manager/hyprlock.nix
     ../../modules/home-manager/foot.nix
     ../../modules/home-manager/tofi.nix
     ../../modules/home-manager/ags.nix
@@ -73,6 +74,7 @@
       obsidian
       pulsemixer
       eza
+      syncthing
       catppuccin-gtk
       inkscape
       blender

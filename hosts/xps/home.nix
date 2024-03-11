@@ -64,6 +64,7 @@
       kanshi
       tofi
       steam
+      syncthing
       prismlauncher
       minigalaxy 
       spotify

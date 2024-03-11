@@ -101,7 +101,7 @@
 	workspaces = [
 	  {
 	    name = "personal";
-	    path = "~/doc/vaults/personal";
+	    path = "~/Sync/vaults/personal";
 	  }
 	];
       };
