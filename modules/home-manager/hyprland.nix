@@ -4,13 +4,9 @@
     enable = true;
 
     settings = {
-      monitor = [
-       "eDP-1,preferred,auto,1.25"
-       "desc:Samsung Electric Company Odyssey G40B HCJW503045,preferred,auto,auto"
-       ",preferred,auto,auto"
-      ];
 
       exec-once = [
+        "kanshi"
         "ags"
         "hyprpaper"
         "hypridle"

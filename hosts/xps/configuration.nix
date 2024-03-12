@@ -110,6 +110,7 @@
   # services.openssh.enable = true;
   services.upower.enable = true;
   services.fstrim.enable = true;
+  services.syncthing.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
