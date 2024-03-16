@@ -108,12 +108,12 @@ const BatteryLabel = () => Widget.Box({
                 `battery-level-${Math.floor(p / 10) * 10}-symbolic`,
             ),
         }),
-        Widget.ProgressBar({
-            vpack: 'center',
-            fraction: battery.bind('percent').as(p =>
-                p > 0 ? p / 100 : 0,
-            ),
-        }),
+        // Widget.ProgressBar({
+        //     vpack: 'center',
+        //     fraction: battery.bind('percent').as(p =>
+        //         p > 0 ? p / 100 : 0,
+        //     ),
+        // }),
     ],
 });
 
@@ -147,7 +147,7 @@ const Center = () => Widget.Box({
 
 const Right = () => Widget.Box({
     hpack: 'end',
-    spacing: 8,
+    spacing: 16,
     children: [
         // Volume(),
         BatteryLabel(),
@@ -175,7 +175,7 @@ App.config({
         // Bar(),
 
         // you can call it, for each monitor
-        Bar(0),
+        // Bar(0),
         Bar(1)
     ],
 });

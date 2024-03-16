@@ -24,7 +24,7 @@ label {
 
 .workspaces button.focused {
     /* border-bottom: 3px solid @theme_selected_bg_color; */
-    background-color: #45475a;
+    background-color: #313244;
 }
 
 .workspaces button {

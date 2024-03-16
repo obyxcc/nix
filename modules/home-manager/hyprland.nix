@@ -6,6 +6,7 @@
     settings = {
 
       exec-once = [
+	"foot --server"
         "kanshi"
         "ags"
         "hyprpaper"
@@ -98,7 +99,7 @@
 
       bind = [
         "$mod, D, exec, tofi-run | xargs hyprctl dispatch exec --"
-        "$mod, RETURN, exec, foot"
+        "$mod, RETURN, exec, footclient"
         "$mod SHIFT, Q, killactive,"
         "$mod SHIFT, space, togglefloating,"
 

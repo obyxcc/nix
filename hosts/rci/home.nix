@@ -22,8 +22,8 @@
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "cole";
-  home.homeDirectory = "/home/cole";
+  home.username = "cyoung";
+  home.homeDirectory = "/home/cyoung";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -53,6 +53,9 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+      nmap
+      wireshark
+      libreoffice
       bat
       brightnessctl
       thunderbird
@@ -65,31 +68,23 @@
       hyprlock
       kanshi
       tofi
-      steam
-      prismlauncher
-      minigalaxy
+      syncthing
       spotify
-      webcord
       gimp
       cmus
       htop
       obsidian
       pulsemixer
       eza
-      syncthing
       catppuccin-gtk
       inkscape
       blender
-      lshw
       mpv
       zathura
       zip
       unzip
       ripgrep #nvim *FIXME
       wl-clipboard
-      gamemode
-      gamescope
-      mangohud
      (pass.withExtensions (ext: [  # Base pass secret mgr + extensions
         ext.pass-otp # one time passwords
         ext.pass-genphrase # generate memorable passphrases
@@ -160,16 +155,16 @@ xdg.userDirs = {
 };
 
 gtk = {
-    enable = true;
-    theme = {
-      name = "Catppuccin-Mocha-Compact-Lavender-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "lavender" ];
-        size = "compact";
-        tweaks = [ "rimless" ];
-        variant = "mocha";
-      };
+  enable = true;
+  theme = {
+    name = "Catppuccin-Mocha-Compact-Lavender-Dark";
+    package = pkgs.catppuccin-gtk.override {
+      accents = [ "lavender" ];
+      size = "compact";
+      tweaks = [ "rimless" ];
+      variant = "mocha";
     };
+  };
   iconTheme = {
     package = pkgs.gnome.adwaita-icon-theme;
     name = "Adwaita";

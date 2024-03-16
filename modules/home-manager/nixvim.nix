@@ -96,15 +96,15 @@
 	  "<leader>fb" = "buffers";
 	};
       };
-      obsidian = {
-	enable = true;
-	workspaces = [
-	  {
-	    name = "personal";
-	    path = "~/Sync/vaults/personal";
-	  }
-	];
-      };
+      #obsidian = {
+	#enable = true;
+	#workspaces = [
+	  #{
+	    #name = "personal";
+	    #path = "~/Sync/vaults/personal";
+	  #}
+	#];
+      #};
     };
 
     colorschemes.catppuccin.enable = true;
