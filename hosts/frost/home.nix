@@ -53,49 +53,13 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-      bat
-      brightnessctl
-      thunderbird
-      fastfetch
-      git
-      foot
-      hyprpaper
-      hyprshot
-      hypridle
-      hyprlock
-      kanshi
-      tofi
       steam
       prismlauncher
       minigalaxy
-      spotify
       webcord
-      gimp
-      cmus
-      htop
-      obsidian
-      pulsemixer
-      eza
-      syncthing
-      catppuccin-gtk
-      inkscape
-      blender
-      lshw
-      mpv
-      zathura
-      zip
-      unzip
-      ripgrep #nvim *FIXME
-      wl-clipboard
       gamemode
       gamescope
       mangohud
-     (pass.withExtensions (ext: [  # Base pass secret mgr + extensions
-        ext.pass-otp # one time passwords
-        ext.pass-genphrase # generate memorable passphrases
-        ext.pass-import    # import from other password managers
-        ext.pass-update    # helpful password change workflow
-      ]))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

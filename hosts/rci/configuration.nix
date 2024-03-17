@@ -1,49 +1,14 @@
 { config, lib, pkgs, inputs, ... }: {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.default
+    ../default/configuration.nix
     ../../modules/nixos/audio.nix
     ../../modules/nixos/nvidia-prime.nix
+    inputs.home-manager.nixosModules.default
   ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   networking.hostName = "xps"; # Define your hostname.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true;
-
-    substituters = ["https://hyprland.cachix.org"]; # cache for hyprland build
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="]; # cache for hyprland build
-  };
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
-
-  # Set your time zone.
-  time.timeZone = "America/New_York";
-
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
-
-
-  security.sudo.wheelNeedsPassword = false;
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
-  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cyoung = {
     isNormalUser = true;
@@ -88,11 +53,6 @@
   programs.zsh.enable = true;
   environment.pathsToLink = [ "/share/zsh" ];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-   environment.systemPackages = with pkgs; [
-   ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -108,6 +68,12 @@
   services.upower.enable = true;
   services.fstrim.enable = true;
   services.syncthing.enable = true;
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

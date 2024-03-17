@@ -13,13 +13,19 @@
     ../../modules/home-manager/firefox.nix
     ../../modules/home-manager/zsh.nix
     ../../modules/home-manager/starship.nix
-    ../../modules/home-manager/git.nix
     ../../modules/home-manager/tmux.nix
     ../../modules/home-manager/irssi.nix
     ../../modules/home-manager/yazi.nix
     ../../modules/home-manager/kanshi.nix
     ../../modules/home-manager/waybar.nix
   ];
+
+  programs.git = {
+    enable = true;
+    userName = "cyoung";
+    userEmail = "cyoung@rcitele.com";
+  };
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "cyoung";
@@ -56,41 +62,7 @@
       nmap
       wireshark
       libreoffice
-      bat
       brightnessctl
-      thunderbird
-      fastfetch
-      git
-      foot
-      hyprpaper
-      hyprshot
-      hypridle
-      hyprlock
-      kanshi
-      tofi
-      syncthing
-      spotify
-      gimp
-      cmus
-      htop
-      obsidian
-      pulsemixer
-      eza
-      catppuccin-gtk
-      inkscape
-      blender
-      mpv
-      zathura
-      zip
-      unzip
-      ripgrep #nvim *FIXME
-      wl-clipboard
-     (pass.withExtensions (ext: [  # Base pass secret mgr + extensions
-        ext.pass-otp # one time passwords
-        ext.pass-genphrase # generate memorable passphrases
-        ext.pass-import    # import from other password managers
-        ext.pass-update    # helpful password change workflow
-      ]))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
