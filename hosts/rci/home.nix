@@ -61,8 +61,11 @@
     # '')
       nmap
       wireshark
+      gns3-gui
       libreoffice
       brightnessctl
+      bluetuith
+      screen
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -138,8 +141,8 @@ gtk = {
     };
   };
   iconTheme = {
-    package = pkgs.gnome.adwaita-icon-theme;
-    name = "Adwaita";
+    package = pkgs.papirus-icon-theme;
+    name = "Papirus-Dark";
   };
 
   font = {

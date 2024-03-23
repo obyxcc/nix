@@ -9,6 +9,7 @@ let
     "mci" = "sudo make clean install";
     "mc" = "make clean";
     "cat" = "bat";
+    "ip" = "ip -c";
   };
 in
 {

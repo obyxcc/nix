@@ -33,6 +33,7 @@
 	];
       };
       barbecue.enable = true;
+      noice.enable = true;
       barbar = {
 	enable = true;
 	animation = false;

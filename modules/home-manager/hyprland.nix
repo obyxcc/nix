@@ -5,12 +5,19 @@
 
     settings = {
 
+      monitor = [
+       "eDP-1,preferred,auto,1.25"
+       "desc:Samsung Electric Company Odyssey G40B HCJW503045,preferred,auto,auto"
+       "desc:Microstep MSI G32C4 0x0000040A,highrr,auto,auto"
+       ",preferred,auto,auto"
+      ];
+
       exec-once = [
 	"foot --server"
-        "kanshi"
-        "ags"
+        # "kanshi"
+        "waybar"
         "hyprpaper"
-        "hypridle"
+        # "hypridle"
       ];
 
       input = {
@@ -65,10 +72,10 @@
         ];	    
       };
 
-      layerrule = [
-        "blur, gtk-layer-shell"
-        "ignorezero, gtk-layer-shell"
-      ];
+      # layerrule = [
+      #   "blur, gtk-layer-shell"
+      #   "ignorezero, gtk-layer-shell"
+      # ];
 
       master = {
         new_is_master = false;
@@ -84,7 +91,7 @@
       };
 
       device = {
-        name = "logitech-usb-receiver";
+        name = "logitech-mx-master-3s";
         sensitivity = -1.0;
       };
 

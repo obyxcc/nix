@@ -60,6 +60,7 @@
       gamemode
       gamescope
       mangohud
+      signal-desktop
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -135,8 +136,8 @@ gtk = {
       };
     };
   iconTheme = {
-    package = pkgs.gnome.adwaita-icon-theme;
-    name = "Adwaita";
+    package = pkgs.papirus-icon-theme;
+    name = "Papirus-Dark";
   };
 
   font = {

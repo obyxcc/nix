@@ -4,6 +4,7 @@
     ../default/configuration.nix
     ../../modules/nixos/audio.nix
     ../../modules/nixos/nvidia-prime.nix
+    ../../modules/nixos/laptop.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -40,6 +41,9 @@
     };
   };
 
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -48,6 +52,13 @@
 
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
+  virtualisation.virtualbox.host = {
+    enable = true;
+    # enableExtensionPack = true;
+  };
+
+  users.extraGroups.vboxusers.members = [ "cyoung" ];
+
   nixpkgs.config.allowUnfree = true;
 
   programs.zsh.enable = true;
@@ -71,7 +82,7 @@
   services.printing.enable = true;
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     openFirewall = true;
   };
 

@@ -4,6 +4,7 @@
     ../default/configuration.nix
     ../../modules/nixos/audio.nix
     ../../modules/nixos/nvidia-prime.nix
+    ../../modules/nixos/laptop.nix
     inputs.home-manager.nixosModules.default
   ];
 
