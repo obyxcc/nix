@@ -33,7 +33,11 @@
 	];
       };
       barbecue.enable = true;
+      neorg.enable = true;
       noice.enable = true;
+      lsp-format.enable = true;
+      nix.enable = true;
+      quickmath.enable = true;
       barbar = {
 	enable = true;
 	animation = false;

@@ -4,6 +4,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  networking.firewall.checkReversePath = false;
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   nix.settings = {
